@@ -1,0 +1,29 @@
+<div class="product p-3 position-relative">
+
+  <i
+    class="fa-heart position-absolute fs-4 top-0 end-0 m-2 z-3 mb-4"
+    [ngClass]="{
+      'fa-solid text-danger': isInWishlist(product._id),
+      'fa-regular text-white': !isInWishlist(product._id)
+    }"
+    (click)="toggleWishlist(product._id); $event.stopPropagation()"
+    style="cursor: pointer;"
+  ></i>
+
+  <a [routerLink]="['/product-details', product._id]">
+    <img class="w-100 rounded-3 mt-3" [src]="product.imageCover" [alt]="product.title">
+    <span class="text-main font-sm fw-medium">{{product.category.name}}</span>
+    <p class="fw-medium text-white">{{product.title.split(' ', 2).join(' ')}}</p>
+    <div class="d-flex justify-content-between">
+      <span class="text-white">
+        {{product.price}}<h6 class="d-inline text-success">EGP</h6>
+      </span>
+      <div>
+        <i class="fa-solid fa-star rating-color"></i>
+        <span class="text-white">{{product.ratingsAverage}}</span>
+      </div>
+    </div>
+  </a>
+
+  <button (click)="addProTocart(product._id)" class="btn bg-main text-white w-100 mt-3">Add To Cart</button>
+</div>

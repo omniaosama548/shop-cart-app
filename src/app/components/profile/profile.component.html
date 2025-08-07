@@ -1,0 +1,26 @@
+
+<div class="container mt-5 d-flex flex-column align-items-center mb-3">
+  <div class="card shadow-lg p-4 text-center" style="max-width: 500px; width: 100%;">
+    <img
+      src="images/avatar-icon0002_750950-43.png"
+      alt="Profile"
+      class="rounded-circle mx-auto d-block mb-3"
+      width="150"
+      height="150"
+    >
+    <h4 class="fw-bold mb-3">Welcome to <span class="text-primary">{{ currentUserName }}</span></h4>
+
+    <div class="d-flex justify-content-center gap-3 mb-3">
+      <a routerLink="update" class="btn btn-outline-primary">
+        <i class="fa fa-user-edit me-1"></i> Update Profile Info
+      </a>
+      <a routerLink="change-password" class="btn btn-outline-danger">
+        <i class="fa fa-lock me-1"></i> Change Password
+      </a>
+    </div>
+
+    <div class="mt-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

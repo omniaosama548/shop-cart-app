@@ -1,0 +1,156 @@
+@if(productDetails){
+  <div class="container-fluid bg-light py-5">
+    <div class="container">
+      <div class="row g-5 align-items-stretch">
+
+        <!-- Product Images Section -->
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="position-relative">
+              <owl-carousel-o [options]="customOptions">
+                @for (img of productDetails.images; track $index) {
+                  <ng-template carouselSlide>
+                    <div class="ratio ratio-1x1">
+                      <img class="img-fluid object-fit-cover" [src]="img" [alt]="productDetails.title" />
+                    </div>
+                  </ng-template>
+                }
+              </owl-carousel-o>
+
+              <!-- Rating Badge -->
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-success fs-6 px-3 py-2 rounded-pill shadow">
+                  <i class="fa-solid fa-star text-warning me-1"></i>
+                  {{productDetails.ratingsAverage}}
+                </span>
+              </div>
+
+              <!-- Sale Badge (if applicable) -->
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="badge bg-danger fs-6 px-3 py-2 rounded-pill shadow">
+                  <i class="fa-solid fa-fire me-1"></i>
+                  HOT
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Information Section -->
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg rounded-4 h-100">
+            <div class="card-body p-4 p-lg-5">
+
+              <!-- Product Title -->
+              <h1 class="card-title h2 fw-bold text-dark mb-4 lh-sm">
+                {{productDetails.title}}
+              </h1>
+
+              <!-- Product Description -->
+              <div class="mb-4">
+                <p class="text-muted fs-6 lh-base mb-0">
+                  {{productDetails.description}}
+                </p>
+              </div>
+
+              <!-- Product Details -->
+              <div class="bg-light p-4 rounded-3 mb-4">
+                <div class="row g-3">
+                  <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-2">
+                      <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-tag text-success me-3 fs-5"></i>
+                        <span class="text-dark fw-medium">Category:</span>
+                      </div>
+                      <span class="badge bg-white text-dark border border-2 px-4 py-2 rounded-pill fs-6 fw-semibold">
+                        {{productDetails.category.name}}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between py-2">
+                      <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-crown text-success me-3 fs-5"></i>
+                        <span class="text-dark fw-medium">Brand:</span>
+                      </div>
+                      <span class="badge bg-white text-dark border border-2 px-4 py-2 rounded-pill fs-6 fw-semibold">
+                        {{productDetails.brand.name}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price and Rating Section -->
+              <div class="bg-success bg-opacity-10 p-4 rounded-3 mb-4 border-start border-success border-4">
+                <div class="d-flex align-items-center justify-content-between flex-wrap">
+
+                  <!-- Price -->
+                  <div class="price-section mb-2 mb-md-0">
+                    <h3 class="text-success fw-bold mb-1 display-6">
+                      {{productDetails.price}}
+                      <span class="fs-4 text-muted fw-normal">EGP</span>
+                    </h3>
+                    <small class="text-muted">Free shipping included</small>
+                  </div>
+
+                  <!-- Rating -->
+                  <div class="rating-section text-end">
+                    <div class="stars mb-1">
+                      <i class="fa-solid fa-star text-warning fs-5"></i>
+                      <i class="fa-solid fa-star text-warning fs-5"></i>
+                      <i class="fa-solid fa-star text-warning fs-5"></i>
+                      <i class="fa-solid fa-star text-warning fs-5"></i>
+                      <i class="fa-solid fa-star-half-stroke text-warning fs-5"></i>
+                    </div>
+                    <small class="text-muted d-block">
+                      ({{productDetails.ratingsAverage}}) • 245 reviews
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Action Buttons -->
+              <div class="d-grid gap-3 d-md-flex">
+                <button (click)="addProTocart(productDetails._id)" class="btn btn-success btn-lg flex-fill rounded-pill py-3 fw-semibold shadow-sm">
+                  <i class="fa-solid fa-cart-plus me-2"></i>
+                  Add To Cart
+                </button>
+
+
+              </div>
+
+              <!-- Product Features -->
+              <!-- <div class="mt-4 pt-4 border-top">
+                <div class="row g-3 text-center">
+                  <div class="col-4">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fa-solid fa-truck text-success fs-3 mb-2"></i>
+                      <small class="text-muted fw-medium">Fast Delivery</small>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fa-solid fa-shield-halved text-success fs-3 mb-2"></i>
+                      <small class="text-muted fw-medium">Secure Payment</small>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="fa-solid fa-medal text-success fs-3 mb-2"></i>
+                      <small class="text-muted fw-medium">Quality Assured</small>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+}

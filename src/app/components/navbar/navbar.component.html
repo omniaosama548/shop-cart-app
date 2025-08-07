@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <div class="p-2 me-2">
+        <!-- <i class="fas fa-shopping-cart text-white"></i> -->
+      </div>
+      <strong class="text-dark">shopCart</strong>
+    </a>
+
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      @if(isLoggedIn==true){
+        <ul class="navbar-nav d-flex align-items-center gap-2">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-3 rounded-pill" routerLinkActive="bg-success text-white" routerLink="home">
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-3 rounded-pill position-relative cursor-pointer" routerLinkActive="bg-success text-white" routerLink="cart">
+              Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-3 rounded-pill" routerLinkActive="bg-success text-white" routerLink="products">
+              Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-3 rounded-pill" routerLinkActive="bg-success text-white" routerLink="wishlist">
+              Wishlist
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold px-3 rounded-pill" routerLinkActive="bg-success text-white" routerLink="brand">
+              Brands
+            </a>
+          </li>
+        </ul>
+      }
+
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" class="btn btn-light rounded-circle btn-sm">
+          <i class="fab fa-facebook text-primary"></i>
+        </a>
+        <a href="#" class="btn btn-light rounded-circle btn-sm">
+          <i class="fab fa-twitter text-info"></i>
+        </a>
+        <a href="#" class="btn btn-light rounded-circle btn-sm">
+          <i class="fab fa-instagram text-danger"></i>
+        </a>
+        <a href="#" class="btn btn-light rounded-circle btn-sm">
+          <i class="fab fa-linkedin text-primary"></i>
+        </a>
+
+        @if(isLoggedIn){
+          <a href="" class="position-relative">
+            <i class="fas fa-shopping-cart me-2 position-relative">
+              <span class="position-absolute top-5 bottom-0 start-100 translate-middle badge rounded-pill bg-main">
+                {{numOfCartItems}}
+              </span>
+            </i>
+          </a>
+          <a routerLink="/profile" class="border border-success p-2 rounded cursor-pointer d-inline-flex align-items-center">
+            <i class="fa-regular fa-circle-user me-2"></i> welcome
+            <span class="text-success ms-1 fs-6 text-uppercase">{{currentUserName}}</span>
+          </a>
+        }
+
+        @if(isLoggedIn==false){
+          <a routerLink="login" routerLinkActive="text-main" class="btn btn-outline-success rounded-pill px-4">
+            <i class="fas fa-sign-in-alt me-1"></i>Login
+          </a>
+          <a routerLink="signup" routerLinkActive="text-main" class="btn btn-success rounded-pill px-4">
+            <i class="fas fa-user-plus me-1"></i>Register
+          </a>
+        }
+        @else{
+          <a class="btn btn-outline-danger rounded-pill px-4 cursor-pointer" (click)="handleLogOut()">
+            <i class="fas fa-sign-out-alt me-1"></i>Logout
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+

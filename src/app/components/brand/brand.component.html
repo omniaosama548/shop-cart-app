@@ -1,0 +1,20 @@
+<div class="bg-dark px-4 min-vh-100 pb-5 pt-5">
+
+  <h2 class="mb-4 text-center text-white">Our Brands</h2>
+
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4">
+    @for (brand of BrandList; track brand._id) {
+      <div class="col">
+        <a [routerLink]="['/brand-details', brand._id]" class="text-decoration-none">
+          <div class="card h-100 border-0 shadow-sm text-center">
+            <img [src]="brand.image" class="card-img-top p-3" [alt]="brand.name">
+            <div class="card-body">
+              <h5 class="card-title text-capitalize text-dark">{{ brand.name }}</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+    }
+  </div>
+
+</div>

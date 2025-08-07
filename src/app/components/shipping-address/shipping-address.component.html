@@ -1,0 +1,12 @@
+<div class="w-75 mx-auto mt-5">
+  <h3>Enter Your Address Details</h3>
+  <form [formGroup]="ShippingAddressForm" (ngSubmit)="onlinePayment()">
+    <label class="mt-2">details</label>
+    <input type="text" class="form-control" formControlName="details">
+     <label class="mt-2">Phone</label>
+    <input type="text" class="form-control" formControlName="phone">
+     <label class="mt-2">City</label>
+    <input type="text" class="form-control" formControlName="city">
+    <button  class="btn bg-main text-white mt-3">Send</button>
+  </form>
+</div>

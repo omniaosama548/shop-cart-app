@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <form class="w-50 mx-auto border p-4 rounded shadow"
+        (ngSubmit)="handleVerifyCode()"
+        [formGroup]="verifyObj">
+     <h4 class="mb-4 text-center text-success fs-2">Verify Code</h4>
+    <p class="text-warning" >please enter The code that sent to your Email:</p>
+    @if(errorMassage){
+      <div class="alert alert-danger">
+        {{errorMassage}}
+      </div>
+    }
+        <div class="mb-3">
+      <label for="resetCode" class="form-label">Code</label>
+      <input type="text" formControlName="resetCode" class="form-control" id="resetCode" placeholder="Enter your Code" />
+      @let resetCode = verifyObj.get('resetCode');
+      @if(resetCode?.touched){
+        <div>
+          @if(resetCode?.getError('required')){
+            <span class="text-danger">Verification Code is required</span>
+          }
+
+        </div>
+      }
+    </div>
+      <button [disabled]="verifyObj.invalid"
+    type="submit" class="btn btn-success w-100">
+    @if(isLoading==false){
+      <span>Send</span>
+    }
+   @else {
+    <span class="fa-solid fa-spinner fa-spin"></span>
+   }
+  </button>
+  </form>
+</div>

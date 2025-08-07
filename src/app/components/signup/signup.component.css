@@ -1,0 +1,10 @@
+.form-control:focus {
+  border-color: #10be6d;
+  box-shadow: none;
+}
+.form-control{
+  border: 2px solid #0aad0a;
+}
+input.ng-invalid.ng-dirty {
+  border-color: red;
+}

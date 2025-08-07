@@ -1,0 +1,42 @@
+<div class="product p-3 bg-dark min-vh-100">
+  @if(wishList.length>0){<div class="row row-cols-sm-1 p-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-5">
+
+    @for(list of wishList; track list._id) {
+      <div class="product position-relative">
+
+
+        <i
+          class="fa-solid fa-trash text-danger position-absolute fs-5"
+          style="top: 10px; right: 10px; cursor: pointer;"
+          (click)="removeFromWishlist(list._id)"
+          title="Remove from Wishlist"
+        ></i>
+
+        <a [routerLink]="['/product-details', list._id]">
+          <img class="w-100 rounded-3 mt-3" [src]="list.imageCover" [alt]="list.title">
+          <span class="text-main font-sm fw-medium">{{ list.category.name }}</span>
+          <p class="fw-medium text-white">{{ list.title.split(' ', 2).join(' ') }}</p>
+          <div class="d-flex justify-content-between">
+            <span class="text-white">
+              {{ list.price }}
+              <h6 class="d-inline text-success">EGP</h6>
+            </span>
+            <div>
+              <i class="fa-solid fa-star rating-color"></i>
+              <span class="text-white">{{ list.ratingsAverage }}</span>
+            </div>
+          </div>
+        </a>
+
+        <button (click)="addProTocart(list._id)" class="btn bg-main text-white w-100 mt-3 mb-4">Add To Cart</button>
+      </div>
+    }
+
+  </div>
+}
+@else{
+    <h2 class="text-center mt-5 text-white">There is no product in your wishlist</h2>
+  }
+
+</div>
+

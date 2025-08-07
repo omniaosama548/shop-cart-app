@@ -1,0 +1,39 @@
+<!-- Categories Slider HTML -->
+<div class="categories-section">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <h2 class="section-title">Explore Categories</h2>
+      <p class="section-subtitle text-muted">Discover a diverse range of products</p>
+    </div>
+
+    <owl-carousel-o [options]="customOptions" class="categories-slider">
+      @for (cat of Categories; track cat._id) {
+        <ng-template carouselSlide>
+          <div class="category-card">
+            <div class="category-image-wrapper">
+              <img
+                class="category-image"
+                [src]="cat.image"
+                [alt]="cat.name"
+                loading="lazy"
+              />
+              <div class="category-overlay">
+                <div class="category-content">
+                  <h4 class="category-name">{{cat.name}}</h4>
+
+                </div>
+                <div class="category-action">
+                  <button class="btn btn-outline-light btn-sm">
+                    <i class="fas fa-arrow-right ms-2"></i>
+                    Display Products
+
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+</div>

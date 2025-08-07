@@ -1,0 +1,29 @@
+<div class=" py-4">
+
+  <!-- Search Input -->
+  <div class="mb-4">
+    <input
+      [(ngModel)]="searchTerm"
+      type="search"
+      class="form-control form-control-lg rounded-3 shadow-sm w-75 m-auto border-dark"
+      placeholder="Search products by name..."
+    >
+  </div>
+
+  <!-- Products Grid -->
+  <div class="bg-dark p-4 rounded-4 min-vh-100">
+     @if ((productList | search: searchTerm).length === 0) {
+    <div class="text-white text-center py-5 fs-4">
+       No products found matching "<strong>{{ searchTerm }}</strong>"
+    </div>
+  }
+    <div class="row g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+      @for (product of (productList | search: searchTerm); track product._id) {
+        <app-product [product]="product"></app-product>
+      }
+    </div>
+
+  </div>
+
+</div>
+
